@@ -1,26 +1,130 @@
 @import "tailwindcss";
+@import "../components/ui-styles.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors - Enhanced THRUART Palette (More Vibrant) */
+  --sage-green: #5a7a5f;
+  --dusty-rose: #c97c7c;
+  --warm-beige: #d4b896;
+  --taupe: #a67c6d;
+  --slate: #4a6569;
+  
+  /* Functional Colors */
+  --primary: #5a7a5f;
+  --primary-hover: #4a6a4f;
+  --primary-light: #e3f0e5;
+  --secondary: #c97c7c;
+  --secondary-hover: #b96b6b;
+  --accent: #a67c6d;
+  --accent-hover: #966c5d;
+  
+  /* Neutrals */
+  --background: #f8f7f5;
+  --surface: #FFFFFF;
+  --surface-hover: #f5f3f0;
+  --border: #e0ddd9;
+  --border-strong: #ccc7c0;
+  
+  /* Text */
+  --text-primary: #2d2a26;
+  --text-secondary: #5a544e;
+  --text-tertiary: #8a837c;
+  --text-inverse: #FAFAF9;
+  
+  /* Status Colors - More Vibrant */
+  --success: #5a7a5f;
+  --success-light: #e3f0e5;
+  --warning: #d4a76a;
+  --warning-light: #fef3e4;
+  --error: #c97c7c;
+  --error-light: #fce8e8;
+  --info: #5a7a8f;
+  --info-light: #e3eef5;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for interactive elements */
+* {
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Toast animations */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* Smooth gradient backgrounds */
+.gradient-sage {
+  background: linear-gradient(135deg, var(--sage-green) 0%, var(--slate) 100%);
+}
+
+.gradient-rose {
+  background: linear-gradient(135deg, var(--dusty-rose) 0%, var(--taupe) 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, var(--warm-beige) 0%, var(--taupe) 100%);
 }
