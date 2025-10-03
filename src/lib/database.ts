@@ -80,7 +80,7 @@ export const updateUser = async (userId: string, updates: Partial<User> & { pass
 export const deleteUser = async (userId: string): Promise<void> => {
   // First, get all stock requests by this user and delete them (cascade delete)
   const userRequests = await db
-    .select({ id: stockRequests.id })
+    .select()
     .from(stockRequests)
     .where(eq(stockRequests.userId, userId));
 
@@ -287,7 +287,7 @@ export const getStockRequests = async (): Promise<StockRequestSubmission[]> => {
 export const createStockRequest = async (request: Omit<StockRequestSubmission, 'id'>): Promise<void> => {
   // Get the next request number
   const allRequests = await db
-    .select({ requestNumber: stockRequests.requestNumber })
+    .select()
     .from(stockRequests)
     .orderBy(desc(stockRequests.requestNumber))
     .limit(1);
