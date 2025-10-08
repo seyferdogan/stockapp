@@ -5,8 +5,6 @@ export default {
   out: './drizzle',
   dialect: 'sqlite',
   dbCredentials: {
-    url: process.env.NODE_ENV === 'production' 
-      ? process.env.TURSO_DATABASE_URL! 
-      : './local.db'
+    url: process.env.TURSO_DATABASE_URL || './local.db'
   },
 } satisfies Config;

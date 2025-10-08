@@ -6,17 +6,20 @@ import * as schema from './schema';
 
 let db: ReturnType<typeof drizzle> | ReturnType<typeof drizzleTurso>;
 
-if (process.env.NODE_ENV === 'production' && process.env.TURSO_DATABASE_URL) {
-  // Production: Use Turso
+// Check if Turso credentials are available (prioritize this)
+if (process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN) {
+  // Use Turso (remote database)
   const client = createClient({
-    url: process.env.TURSO_DATABASE_URL!,
-    authToken: process.env.TURSO_AUTH_TOKEN!,
+    url: process.env.TURSO_DATABASE_URL,
+    authToken: process.env.TURSO_AUTH_TOKEN,
   });
   db = drizzleTurso(client, { schema });
+  console.log('📦 Using Turso database');
 } else {
   // Development: Use local SQLite
   const sqlite = new Database('./local.db');
   db = drizzle(sqlite, { schema });
+  console.log('📦 Using local SQLite database');
 }
 
 export { db };
