@@ -203,6 +203,7 @@ export const createNewProduct = async (
     id: nanoid(),
     name: product.name,
     sku: product.sku,
+    barcode: product.barcode || null,
   };
 
   const [stockItem] = await db.insert(stockItems).values(newItem).returning();
