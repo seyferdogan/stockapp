@@ -24,6 +24,7 @@ export async function seedDatabase() {
       name: 'Admin User',
       email: 'admin@stockapp.com',
       role: 'admin',
+      passwordHash: null,
       createdAt: new Date().toISOString(),
     },
     {
@@ -31,6 +32,7 @@ export async function seedDatabase() {
       name: 'Warehouse Manager',
       email: 'warehouse@stockapp.com',
       role: 'warehouse-manager',
+      passwordHash: null,
       createdAt: new Date().toISOString(),
     },
     {
@@ -39,6 +41,7 @@ export async function seedDatabase() {
       email: 'sydney@stockapp.com',
       role: 'store-manager',
       storeLocation: 'Sydney',
+      passwordHash: null,
       createdAt: new Date().toISOString(),
     },
     {
@@ -47,6 +50,7 @@ export async function seedDatabase() {
       email: 'melbourne@stockapp.com',
       role: 'store-manager',
       storeLocation: 'Melbourne',
+      passwordHash: null,
       createdAt: new Date().toISOString(),
     },
   ]);
